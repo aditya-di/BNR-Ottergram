@@ -1,0 +1,114 @@
+html,body{
+  height: 100%;
+}
+body{
+  font-size: 10px;
+  background: rgb(149,194,215);
+  display: flex;
+  flex-direction: column;
+}
+.thumbnail-title{
+  display: block;
+  margin: 0;
+  padding: 4px 10px;
+  background:  rgb(96,125,139);
+  color: rgb(202,238,255);
+  font-size: 18px;
+}
+a{
+  text-decoration: none;
+}
+.main-header{
+  flex: 0 1 auto;
+}
+.main-content{
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+}
+/* format the header ottergram*/
+.logo-text{
+  background: white;
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 37px;
+}
+/* format the images */
+.thumbnail-image{
+  display: block;
+  width: 100%;
+}
+/* format the list items */
+.thumbnail-item{
+  display: inline-block;
+  min-width: 120px;
+  min-height: 120px;
+  border: 1px solid rgb(100%,100%,100%);
+  border: 1px solid rgba(100%,100%,100%,0.8);
+}
+/* get rid of the bullets*/
+.thumbnail-list{
+  flex: 0 1 auto;
+  list-style: none;
+  padding: 0;
+  white-space: nowrap;
+  overflow-x: auto; /* scrollbar horizontal x-axis invisible after flexbox */
+  order: 2; /* move thumbnail list below detailed image */
+  display: flex; /* declare thumbnail list as flex container */
+  justify-content: space-between; /* space between thumbnail list items */
+}
+/* format the detail image */
+.detail-image{
+  width: 90%;
+}
+.detail-image-container{
+  flex: 1 1 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.detail-image-frame{
+  text-align: center;
+  position: relative;
+}
+.detail-image-title{
+  position: absolute;
+  bottom: -16px;
+  left: 40px;
+  color: white;
+  font-size: 40px;
+  text-shadow: rgba( 0, 0, 0, 0.9) 1px 2px 9px;
+}
+
+/* .detail-image-container is a descendent of .hidden-detail
+    the class .hidden-detail will be dynamically set */
+.hidden-detail .detail-image-container{
+  display: none;
+
+}
+.hidden-detail .thumbnail-list{
+  flex-direction: column;
+  align-items: center;
+}
+.hidden-detail .thumbnail-item{
+  max-width: 80%
+}
+
+/* best practice is to keep media query at the bottom of css */
+@media all and (min-width: 768px){
+  .main-content{
+    flex-direction: row;
+    overflow: hidden;
+  }
+  .thumbnail-list{
+    flex-direction: column;
+    order: 0;
+    margin-left: 20px;
+  }
+  .thumbnail-item{
+    max-width: 260px;
+  }
+  .thumbnail-item + .thumbnail-item{
+    margin-top: 20px;
+  }
+}
